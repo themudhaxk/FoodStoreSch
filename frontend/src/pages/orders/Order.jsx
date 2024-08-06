@@ -11,7 +11,6 @@ import {
   usePaidOrderMutation,
 } from "../../redux/api/orderApiSlice";
 import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3";
-import { MonnifyButton, MonnifyConsumer } from "react-monnify";
 
 // const PUBLIC_KEY = 'FLUTTERWAVE_PUBLIC_KEY'
 
