@@ -26,6 +26,10 @@ const app = express();
 // Middleware
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors({
+  origin: '*',
+}));
+
 
 // Routes
 app.use("/api/users", userRoute);
