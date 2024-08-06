@@ -24,7 +24,7 @@ const app = express();
 //connectDB()
 
 // Middleware
-app.use(cookieParser());
+//app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors({
