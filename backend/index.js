@@ -29,6 +29,7 @@ app.use(cookieParser());
 //app.use(express.urlencoded({ extended: false }));
 app.use(cors({
   origin: 'https://foodstoresch.onrender.com',
+  credentials: true,
 }));
 
 
