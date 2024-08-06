@@ -1,5 +1,5 @@
 // Packages
-import path from "path";
+/* import path from "path";
 import dotenv from "dotenv";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -75,7 +75,7 @@ export const connectDB = async () => {
 
 connectDB();
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT} 😁`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT} 😁`)); */
 
 /* mongoose.connect(process.env.MONGO_URI)
     .then(() => {
@@ -84,3 +84,60 @@ app.listen(PORT, () => console.log(`Server is running on port ${PORT} 😁`));
         });
     })
     .catch((err) => console.log(err)); */
+
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import userRoute from "./routes/userRoute.js";
+import categoryRoute from "./routes/categoryRoute.js";
+import productRoute from "./routes/productRoute.js";
+import uploadRoute from "./routes/uploadRoute.js";
+import orderRoute from "./routes/orderRoute.js";
+
+dotenv.config();
+
+const app = express();
+
+// Middleware
+app.use(express.json());
+app.use(cookieParser());
+
+const allowedOrigins = ['https://foodstoresch.onrender.com'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
+app.options('*', cors()); // Preflight all routes
+
+// Routes
+app.use("/api/users", userRoute);
+app.use("/api/category", categoryRoute);
+app.use("/api/products", productRoute);
+app.use("/api/orders", orderRoute);
+app.use("/api/upload", uploadRoute);
+
+const PORT = process.env.PORT || 5000;
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Successfully connected to MongoDB 👍");
+  } catch (error) {
+    console.error(`ERROR: ${error.message}`);
+    process.exit(1);
+  }
+};
+
+connectDB();
+
+app.listen(PORT, () => console.log(`Server is running on port ${PORT} 😁`));
