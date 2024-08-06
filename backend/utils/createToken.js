@@ -11,8 +11,6 @@ const generateToken = (res, userId) => {
         secure: process.env.NODE_ENV === "production", // Set to true if in production
         sameSite: "strict",
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        domaim: "https://foodstoresch.onrender.com",
-        path: "/"
     })
 
     return token;
