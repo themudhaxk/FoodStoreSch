@@ -375,6 +375,17 @@ const Navbar = () => {
                   Manage Orders
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/.allegro.cz.allegrosandbox.pl"
+                  className="list-items block px-4 py-2 hover:bg-gray-700 rounded-sm"
+                  style={({ isActive }) => ({
+                    color: isActive ? "red" : "white",
+                  })}
+                >
+                  Cors
+                </NavLink>
+              </li>
             </ul>
           </section>
         )}
