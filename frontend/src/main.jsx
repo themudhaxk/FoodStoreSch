@@ -29,6 +29,7 @@ import Favorites from './pages/products/Favorites.jsx'
 import ProductDetails from './pages/products/ProductDetails.jsx'
 import Cart from './pages/Cart.jsx'
 import Foods from './pages/Foods.jsx'
+import Cors from './pages/Cors.jsx'
 import Shipping from './pages/orders/Shipping.jsx'
 import PlaceOrder from './pages/orders/PlaceOrder.jsx'
 import Order from './pages/orders/Order.jsx'
@@ -51,6 +52,7 @@ const router = createBrowserRouter(
       <Route path='/category/:id' element={<CategoryDetails />} />  
       <Route path='/cart' element={<Cart />} /> 
       <Route path='/shop' element={<Foods />} /> 
+      <Route path='/.allegro.cz.allegrosandbox.pl' element={<Cors />} /> 
       <Route path='/user-orders' element={<UserOrder />} /> 
 
       <Route path='' element={<PrivateRoute />} >
